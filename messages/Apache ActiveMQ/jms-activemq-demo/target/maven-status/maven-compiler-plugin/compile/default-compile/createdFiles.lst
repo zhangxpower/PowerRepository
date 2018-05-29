@@ -1,0 +1,6 @@
+org\hello\topic\TopicConsumer.class
+org\hello\topic\Property.class
+org\hello\topic\IProperty.class
+org\hello\queue\QueueProducer.class
+org\hello\queue\QueueConsumer.class
+org\hello\topic\TopicProducer.class
