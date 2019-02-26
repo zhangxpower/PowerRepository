@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="spring4-demo1:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/spring4_demo1_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="spring4-demo1/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="spring4-demo1" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="application_server_libraries" name="Tomcat 8.5.23" />
+          <element id="library" level="project" name="lib" />
+          <element id="library" level="project" name="Spring-4.3.18.RELEASE" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
