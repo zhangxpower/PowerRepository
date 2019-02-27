@@ -12,6 +12,7 @@
         <module>proxy-pattern</module>
         <module>factory-method-pattern</module>
         <module>singleton-pattern</module>
+        <module>prototype-pattern</module>
     </modules>
 
 

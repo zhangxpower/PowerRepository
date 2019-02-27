@@ -1,4 +1,4 @@
-package com.gandalf;
+package com.gandalf.basecopy;
 
 public class Person implements Cloneable{
 

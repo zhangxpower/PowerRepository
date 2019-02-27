@@ -1,6 +1,8 @@
-package com.gandalf.basecopy;
+package com.gandalf.deepcopy;
 
-public class Person implements Cloneable{
+import java.io.*;
+
+public class Person implements Cloneable, Serializable{
 
     private String name;
 
@@ -42,16 +44,29 @@ public class Person implements Cloneable{
     }
 
     /**
-     * 浅复制，只复制基本属性。
+     * 深度复制，复制基本属性和引用属性（引用对象需要单独clone）。
      * @return
      * @throws CloneNotSupportedException
      */
     @Override
     protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
+        Interest interest = (Interest)this.interest.clone();
+        Person p = (Person)super.clone();
+        p.interest = interest;
+        return p;
     }
 
-    public class Interest {
+    public Person deepCloneByIO() throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(out);
+        objectOutputStream.writeObject(this);
+        byte[] objectData = out.toByteArray();
+        ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(objectData));
+        Person p = (Person)objectInputStream.readObject();
+        return p;
+    }
+
+    public class Interest implements Cloneable, Serializable {
         private String interestName;
 
         public Interest(String interestName) {
@@ -64,6 +79,11 @@ public class Person implements Cloneable{
 
         public void setInterestName(String interestName) {
             this.interestName = interestName;
+        }
+
+        @Override
+        protected Object clone() throws CloneNotSupportedException {
+            return super.clone();
         }
 
         @Override
