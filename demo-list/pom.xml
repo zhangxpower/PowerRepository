@@ -11,6 +11,7 @@
     <modules>
         <module>demo-kafka</module>
         <module>demo-vm</module>
+        <module>demo-elasticsearch</module>
     </modules>
     <build>
         <plugins>
@@ -34,13 +35,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
-        </dependency>
-
-        <!-- SLF4J and Logback -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.4.12</version>
         </dependency>
     </dependencies>
 </project>
