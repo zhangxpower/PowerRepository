@@ -1,9 +1,10 @@
 package com.fly.javascripting.test1;
 
+
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
-import java.util.List;
+import java.util.Arrays;
 
 public class RunJavaScriptExample {
     public static void main(String[] args) throws ScriptException {
@@ -11,13 +12,12 @@ public class RunJavaScriptExample {
         ScriptEngine engine = manager.getEngineByName("JavaScript");
 
         //绑定java对象到脚步环境
-        engine.put("userList", List.of("John", "Jane", "Jack"));
+        engine.put("userList", Arrays.asList("Alice", "Bob", "Anna", "Tom", "Amanda"));
 
         //执行脚本操作java对象
-        engine.eval("function filterNames(prefix){return userList.stream().filter(name => name.startsWith(prefix))} var result=filterNames('A');");
+        engine.eval("var arr = Java.from(userList); print('js invoke.'); function filterNames(prefix){ return arr.filter(function(item) {return item.startsWith(prefix)})} var result=filterNames('A'); ");
 
-        List<String> result = (List<String>) engine.get("result");
-
+        Object result = engine.get("result");
         System.out.println(result);
     }
 }

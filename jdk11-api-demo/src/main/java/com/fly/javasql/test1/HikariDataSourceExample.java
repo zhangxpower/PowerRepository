@@ -23,14 +23,11 @@ public class HikariDataSourceExample {
                      "INSERT INTO USERS(name,email) VALUES(?,?)")) {
 
             conn.setAutoCommit(false); // 开启事务
-
-            stmt.setString(1, "John");
-            stmt.setString(2, "john@example.com");
-            stmt.addBatch();
-
-            stmt.setString(1, "Alice");
-            stmt.setString(2, "alice@example.com");
-            stmt.addBatch();
+            for (int i = 0; i < 10; i++) {
+                stmt.setString(1, "John-"+i);
+                stmt.setString(2, "john-"+i+"@example.com");
+                stmt.addBatch();
+            }
 
             int[] counts = stmt.executeBatch();
             conn.commit(); // 提交事务
